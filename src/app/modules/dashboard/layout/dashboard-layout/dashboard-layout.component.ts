@@ -8,6 +8,13 @@ import { MediaMatcher } from '@angular/cdk/layout';
 })
 export class DashboardLayoutComponent implements OnInit {
 
+  menuItems = [
+    { name: 'Trainings List', route: '/dashboard/trainings' },
+    { name: 'Create Training', route: '/dashboard/trainings/create' },
+
+    { name: 'Participants List', route: '/dashboard/participants' },
+    { name: 'Create Participant', route: '/dashboard/participants/create' },
+  ]
   mobileQuery: MediaQueryList;
 
   fillerNav = Array.from({ length: 50 }, (_, i) => `Nav Item ${i + 1}`);
@@ -30,10 +37,14 @@ export class DashboardLayoutComponent implements OnInit {
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
+  ngOnInit(): void {
+
+  }
+
+
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
-  shouldRun = /(^|.)(stackblitz|webcontainer).(io|com)$/.test(window.location.host);
-}
 
+}
